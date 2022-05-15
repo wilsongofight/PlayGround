@@ -1,0 +1,23 @@
+def act():
+
+   print('==>一键超人测试版==>【vx】')
+   dir_name = input('新建一个结果存放文件夹：')
+   file_name = input('输入需要分表的文件名:') + '.xlsx'
+   ziduan = input('输入分表的条件字段：')
+
+   path_sourse = str(os.getcwd())
+   path_end = os.mkdir(path_sourse + '\\' + dir_name)
+   path_final = path_sourse + '\\' + dir_name
+   path = (path_sourse + '\\' + file_name)
+
+   dfs = pd.read_excel(path)
+
+   positions_list = dfs[ziduan].unique()
+
+   for position in positions_list:
+
+      df = dfs[dfs[ziduan] == position]
+
+      df.to_excel(path_final + '\%s.xlsx'%position,index=False)
+
+act()
