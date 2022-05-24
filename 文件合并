@@ -1,0 +1,16 @@
+            def act_hb():
+            
+                hb_list = []
+                for fname in os.listdir("."):
+                    if fname.endswith(".xlsx"):
+                        hb_list.append(pd.read_excel(fname, dtype=str))
+                        hb_all = pd.concat(hb_list)
+                        hb_name = e1.get()
+                        hb_all.to_excel("%s.xlsx" % hb_name, index=False)
+
+                    elif fname.endswith(".csv"):
+                        hb_list.append(pd.read_csv(fname, dtype=str))
+                        hb_all = pd.concat(hb_list)
+                        hb_name = e1.get()
+                        hb_all.to_csv("%s.csv" % hb_name, index=False)
+                       
